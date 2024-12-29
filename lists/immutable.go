@@ -315,15 +315,6 @@ func EveryIndexed[A comparable](slice []A, cb func(A, int) bool) bool {
 	return true
 }
 
-// empty
-func IsEmpty[A any](slice []A) bool {
-	return len(slice) == 0
-}
-
-func IsNotEmpty[A any](slice []A) bool {
-	return len(slice) != 0
-}
-
 // zip
 type ZipItem[A any, B any] struct {
 	a A
