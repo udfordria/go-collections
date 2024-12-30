@@ -1,11 +1,19 @@
 package iterables
 
-func IsEmpty[T comparable](v T) bool {
-	var zero T
-	return zero == v
+// Should be used
+func IsEmpty(element interface{}) bool {
+	switch value := element.(type) {
+	case string:
+		return len(value) == 0
+	case map[interface{}]interface{}:
+		return len(value) == 0
+	case []interface{}:
+		return len(value) == 0
+	default:
+		return false
+	}
 }
 
-func IsNotEmpty[T comparable](v T) bool {
-	var zero T
-	return zero != v
+func IsNotEmpty(element interface{}) bool {
+	return !IsEmpty(element)
 }
