@@ -79,6 +79,29 @@ func MapNotNullIndexed[A any, B any](slice []A, cb func(A, int) *B) []B {
 	return newSlice
 }
 
+// map unique
+func MapUnique[A any, B comparable](slice []A, cb func(A) B) []B {
+	newSlice := []B{}
+	for _, item := range slice {
+		val := cb(item)
+		if !Contains(newSlice, val) {
+			newSlice = append(newSlice, val)
+		}
+	}
+	return newSlice
+}
+
+func MapUniqueIndexed[A any, B comparable](slice []A, cb func(A, int) B) []B {
+	newSlice := []B{}
+	for i, item := range slice {
+		val := cb(item, i)
+		if !Contains(newSlice, val) {
+			newSlice = append(newSlice, val)
+		}
+	}
+	return newSlice
+}
+
 // flat map not null
 func FlatMapNotNull[A any, B any](slice []A, cb func(A) []*B) []B {
 	newSlice := []B{}
