@@ -1,6 +1,6 @@
 package lists
 
-import "math/rand"
+import "math/rand/v2"
 
 func ToFiltered[A any](slice []A, cb func(A) bool) []A {
 	newSlice := []A{}

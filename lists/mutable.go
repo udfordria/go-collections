@@ -1,7 +1,7 @@
 package lists
 
 import (
-	"math/rand"
+	"math/rand/v2"
 	"sort"
 )
 
@@ -130,24 +130,24 @@ func Sort[A any](slice []A, cb func(A, A) bool) {
 // shuffle
 func Shuffle[A any](slice []A) {
 	for i := range slice {
-		j := rand.Intn(i + 1)
+		j := rand.IntN(i + 1)
 		slice[i], slice[j] = slice[j], slice[i]
 	}
 }
 
 func ShuffleRNG[A any](slice []A, random rand.Rand) {
 	for i := range slice {
-		j := random.Intn(i + 1)
+		j := random.IntN(i + 1)
 		slice[i], slice[j] = slice[j], slice[i]
 	}
 }
 
 func Pick[A any](slice []A) A {
-	return slice[rand.Intn(len(slice))]
+	return slice[rand.IntN(len(slice))]
 }
 
 func PickRNG[A any](slice []A, random rand.Rand) A {
-	return slice[random.Intn(len(slice))]
+	return slice[random.IntN(len(slice))]
 }
 
 // clear
