@@ -15,8 +15,7 @@ func InsertLast[A any](slice *[]A, element A) {
 }
 
 func InsertAt[A any](slice *[]A, index int, element A) {
-	*slice = append((*slice)[:index+1], (*slice)[index:]...)
-	(*slice)[index] = element
+	*slice = append((*slice)[:index], append([]A{element}, (*slice)[index:]...)...)
 }
 
 // all
@@ -160,6 +159,6 @@ func Push[A any](slice *[]A, element A) {
 	InsertLast(slice, element)
 }
 
-func Pop[A any](slice *[]A, element A) {
+func Pop[A any](slice *[]A) {
 	RemoveLast(slice)
 }
